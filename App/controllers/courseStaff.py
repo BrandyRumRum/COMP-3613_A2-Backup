@@ -34,3 +34,4 @@ def view_course_staff(course_name):
     print(f'Staff for course "{course.name}":')
     for staff_members in staff:
         print(f'{staff_members.staff.name} ({staff_members.staff.role})')
+    return staff

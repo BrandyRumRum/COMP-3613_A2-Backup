@@ -5,11 +5,13 @@ from.index import index_views
 
 from App.controllers import (
     create_staff,
-    jwt_required
+    jwt_required,
+    staff_required
 )
 
 staff_views = Blueprint('staff_views', __name__, template_folder='../templates')
 
+@staff_required
 @staff_views.route('/staff', methods=['POST'])
 def create_staff_action():
     data = request.form
