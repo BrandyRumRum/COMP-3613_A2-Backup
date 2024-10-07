@@ -2,13 +2,13 @@ from App.models import Staff
 from App.database import db
 from sqlalchemy.exc import IntegrityError
 
-def create_staff(name, role):
+def create_staff(username, password, name, role):
     staff_member = Staff.query.filter_by(name=name, role=role).first()
     if staff_member:
        print("Staff member " + name + " is already assigned to " + role) 
        return
     
-    staff = Staff(name=name, role=role)
+    staff = Staff(username=username, password=password, name=name, role=role)
     try:
         db.session.add(staff)
         db.session.commit()

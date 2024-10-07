@@ -75,7 +75,9 @@ Staff Commands
 staff_cli = AppGroup('staff', help='Staff object commands')
 
 @staff_cli.command('create-staff')
-def create_staff_command():
+@click.argument("username", default="rob")
+@click.argument("password", default="robpass")
+def create_staff_command(username, password):
     roles = {1: "Lecturer", 
              2: "TA", 
              3: "Tutor"}
@@ -85,7 +87,7 @@ def create_staff_command():
     while role_id not in (1,2,3):
         role_id = int(input("Enter role {Lecturer: 1, TA: 2, Tutor: 3}: "))
     role = roles.get(role_id)
-    create_staff(name, role)
+    create_staff(username, password, name, role)
 
 app.cli.add_command(staff_cli)
 
