@@ -6,5 +6,6 @@ from App.database import db
 def initialize():
     db.drop_all()
     db.create_all()
+    #create_course_admin('chad', 'pass', 'Chad')
     create_staff('bob', 'bobpass', 'Bob', 'Lecturer')
-    create_course_admin('chad', 'pass')
+    

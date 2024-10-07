@@ -3,7 +3,7 @@ from flask import Flask
 from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
-from App.models import User, Staff, Course, CourseStaff
+from App.models import User, Staff, Course, CourseStaff, CourseAdmin
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, create_staff, create_course, assign_staff, view_course_staff )
 
@@ -33,8 +33,9 @@ user_cli = AppGroup('user', help='User object commands')
 @user_cli.command("create", help="Creates a user")
 @click.argument("username", default="rob")
 @click.argument("password", default="robpass")
-def create_user_command(username, password):
-    create_user(username, password)
+@click.argument("name", default="Rob")
+def create_user_command(username, password, name):
+    create_user(username, password, name)
     print(f'{username} created!')
 
 # this command will be : flask user create bob bobpass

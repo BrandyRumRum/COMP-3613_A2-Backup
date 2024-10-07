@@ -1,8 +1,8 @@
 from App.models import User, CourseAdmin
 from App.database import db
 
-def create_user(username, password):
-    newuser = User(username=username, password=password)
+def create_user(username, password, name):
+    newuser = User(username=username, password=password, name=name)
     db.session.add(newuser)
     db.session.commit()
     return newuser
@@ -31,8 +31,9 @@ def update_user(id, username):
         return db.session.commit()
     return None
 
-def create_course_admin(username, password):
-    newuser = CourseAdmin(username=username, password=password)
+def create_course_admin(username, password, name):
+
+    newuser = CourseAdmin(username=username, password=password, name=name)
     try:
         db.session.add(newuser)
         db.session.commit()
